@@ -3,4 +3,228 @@
    uuid = "205079CE-D3A6-434A-B8E3-715837A25EED"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "AB12A222-6DF9-4516-A7CC-38153B1B1DA6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Truth/Screens/Home/HomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "88"
+            endingLineNumber = "88"
+            landmarkName = "collectionView(_:viewForSupplementaryElementOfKind:at:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "25252619-8546-44EE-A3B6-E29CE39BA326"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Truth/Screens/Home/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "33"
+            endingLineNumber = "33"
+            landmarkName = "fetchTechCrunchArticles()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "25252619-8546-44EE-A3B6-E29CE39BA326 - bfe91389063f1fe9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Truth.News, Truth.Network.DataError&gt;) -&gt; () in Truth.HomeViewModel.fetchTechCrunchArticles() -&gt; ()"
+                  moduleName = "Truth"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melvinasare/Documents/GitHub/truth/Truth/Screens/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "515">
+               </Location>
+               <Location
+                  uuid = "25252619-8546-44EE-A3B6-E29CE39BA326 - bfe91389063f1fb7"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Truth.News, Truth.Network.DataError&gt;) -&gt; () in Truth.HomeViewModel.fetchTechCrunchArticles() -&gt; ()"
+                  moduleName = "Truth"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melvinasare/Documents/GitHub/truth/Truth/Screens/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "35"
+                  endingLineNumber = "35"
+                  offsetFromSymbolStart = "225">
+               </Location>
+               <Location
+                  uuid = "25252619-8546-44EE-A3B6-E29CE39BA326 - bfe91389063f1f96"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Truth.News, Truth.Network.DataError&gt;) -&gt; () in Truth.HomeViewModel.fetchTechCrunchArticles() -&gt; ()"
+                  moduleName = "Truth"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melvinasare/Documents/GitHub/truth/Truth/Screens/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "34"
+                  endingLineNumber = "34"
+                  offsetFromSymbolStart = "283">
+               </Location>
+               <Location
+                  uuid = "25252619-8546-44EE-A3B6-E29CE39BA326 - bfe91389063f1fe9"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Result&lt;Truth.News, Truth.Network.DataError&gt;) -&gt; () in Truth.HomeViewModel.fetchTechCrunchArticles() -&gt; ()"
+                  moduleName = "Truth"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melvinasare/Documents/GitHub/truth/Truth/Screens/Home/HomeViewModel.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "33"
+                  endingLineNumber = "33"
+                  offsetFromSymbolStart = "283">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7D443873-DF04-4205-AB47-4C715E7E970A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Truth/Screens/Home/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "35"
+            endingLineNumber = "35"
+            landmarkName = "fetchTechCrunchArticles()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "67AC6BDB-E78F-45C0-979B-7221613AC5AD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Truth/Screens/Home/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "60"
+            endingLineNumber = "60"
+            landmarkName = "fetchWallStreetArticles()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9B6FC98D-37AC-481C-8AA7-B1FE203773BB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Truth/Screens/Home/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "54"
+            endingLineNumber = "54"
+            landmarkName = "fetchHeadlinesArticles()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D7333B7D-4750-4482-9767-94D10B85AF4A"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Truth/Screens/Home/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "48"
+            endingLineNumber = "48"
+            landmarkName = "fetchAppleArticles()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "FC49F908-9DD2-42F3-9588-2E5CBDDEE1C6"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Truth/Screens/Home/HomeViewModel.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "42"
+            endingLineNumber = "42"
+            landmarkName = "fetchTeslaArticles()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "9073DCC6-5931-4F0E-9444-2840FF990E10"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Truth/Screens/Home/HomeViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "153"
+            endingLineNumber = "153"
+            landmarkName = "collectionView(_:didSelectItemAt:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "9073DCC6-5931-4F0E-9444-2840FF990E10 - 123463cd49224347"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Truth.HomeViewController.collectionView(_: __C.UICollectionView, didSelectItemAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Truth"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melvinasare/Documents/GitHub/truth/Truth/Screens/Home/HomeViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "155"
+                  endingLineNumber = "155"
+                  offsetFromSymbolStart = "1206">
+               </Location>
+               <Location
+                  uuid = "9073DCC6-5931-4F0E-9444-2840FF990E10 - 123463cd49224347"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Truth.HomeViewController.collectionView(_: __C.UICollectionView, didSelectItemAt: Foundation.IndexPath) -&gt; ()"
+                  moduleName = "Truth"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/melvinasare/Documents/GitHub/truth/Truth/Screens/Home/HomeViewController.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "155"
+                  endingLineNumber = "155"
+                  offsetFromSymbolStart = "1257">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

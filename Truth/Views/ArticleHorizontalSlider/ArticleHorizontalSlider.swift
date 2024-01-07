@@ -25,7 +25,6 @@ class ArticleHorizontalSlider: UIView {
     }()
     
     private func imageStyles() {
-        articleImage.backgroundColor = .red
         articleImage.layer.cornerRadius = 8
         articleImage.contentMode = .scaleAspectFill
         articleImage.layer.masksToBounds = true
@@ -38,7 +37,7 @@ class ArticleHorizontalSlider: UIView {
     
     public func setArticleDetails(title: String, image: String?, source: String?) {
         self.articleTitle.text = title
-        self.articleImage.image = nil
+        self.articleImage.sd_setImage(with: URL(string: image ?? "", relativeTo: nil))
         self.authorSource.setArticleSource(source: source)
     }
     

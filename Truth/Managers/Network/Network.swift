@@ -28,7 +28,7 @@ class Network {
     static let shared = Network()
     
     public func fetchNewsApi(url: NewsApi, completion: @escaping (Result <News, DataError>) -> Void) {
-            URLSession.shared.dataTask(with: URL(string: "\(url.rawValue + apiKey)")!) { data, response, error in
+            URLSession.shared.dataTask(with: URL(string: "\(url.rawValue)")!) { data, response, error in
             guard let data else {
                 completion(.failure(.invalidData))
                 return

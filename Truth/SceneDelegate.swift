@@ -16,11 +16,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
             let window = UIWindow(windowScene: windowScene)
             let homePage = HomeViewController(viewModel: HomeViewModel())
+            let rootController = UINavigationController(rootViewController: homePage)
 
             window.backgroundColor = .white
             self.window = window
             window.makeKeyAndVisible()
-            window.rootViewController = homePage
+            window.rootViewController = rootController
         }
     }
 

@@ -23,10 +23,11 @@ class ArticleVerticleSliderCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(article)
         
+        contentView.addSubview(article)
+
         article.topAnchor.constraint(equalTo: topAnchor).isActive = true
-        article.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 6).isActive = true
+        article.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         article.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         article.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
     }

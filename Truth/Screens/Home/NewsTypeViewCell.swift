@@ -1,8 +1,8 @@
 //
-//  NewsTypeViewCell.swift
+//  NewsTypeCell.swift
 //  Truth
 //
-//  Created by Melvin Asare on 02/01/2024.
+//  Created by Melvin Asare on 07/01/2024.
 //
 
 import UIKit
@@ -13,6 +13,7 @@ class NewsTypeViewCell: UICollectionViewCell {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.textColor = .darkGray
         label.text = "Text"
+        label.font = UIFont(name: "Arial", size: 12)
         label.font = UIFont(name: "Arial", size: 8)
         label.textAlignment = .center
         return label

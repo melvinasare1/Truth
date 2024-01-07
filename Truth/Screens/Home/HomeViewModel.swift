@@ -6,19 +6,20 @@
 //
 
 import Foundation
+import Combine
 
 class HomeViewModel {
-    public var techCrunchNews: News?
-    public var appleNews: News?
-    public var usHeadlineNews: News?
-    public var teslaNews: News?
-    public var wallStreetNews: News?
-    public var popularNews: News?
+    @Published public var techCrunchNews: News?
+    @Published public var appleNews: News?
+    @Published public var usHeadlineNews: News?
+    @Published public var teslaNews: News?
+    @Published public var wallStreetNews: News?
+    @Published public var popularNews: News?
 
     private var newsTypes = ["Beyond","Taste", "Hello", "Time"]
     
-    public func news(for indexPath: IndexPath, type: News) -> Articles? {
-        return type.articles?.object(at: indexPath.row)
+    public func news(for indexPath: IndexPath, articles: [Articles]?) -> Articles? {
+        return articles?.object(at: indexPath.row)
     }
     
     public func type(for indexPath: IndexPath) -> String? {
@@ -26,10 +27,10 @@ class HomeViewModel {
     }
     
     public func fetchTechCrunchArticles() {
-        Network.shared.fetchNewsApi(url: .techCrunch) { news in
+        Network.shared.fetchNewsApi(url: .techCrunch) { [weak self] news in
+            guard let self = self else { return }
             do {
                 self.techCrunchNews = try news.get()
-                
             } catch {
                 print(error)
             }
@@ -61,4 +62,13 @@ class HomeViewModel {
     }
     
     public func fetchPopularArticles() {}
+    
+    
+    init() {
+//        fetchAppleArticles()
+//        fetchTeslaArticles()
+//        fetchHeadlinesArticles()
+        fetchTechCrunchArticles()
+//        fetchWallStreetArticles()
+    }
 }
