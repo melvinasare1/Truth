@@ -9,14 +9,10 @@ import UIKit
 
 
 class HeaderView: UICollectionReusableView {
-    
-    private let popularTitle: UILabel = {
-       let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .darkGray
-        label.text = "Popular"
-        label.font = UIFont(name: "Arial", size: 24)
-        label.textAlignment = .left
+    private let popularTitle: TruthLabel = {
+       let label = TruthLabel()
+        label.configureText(textAlignment: .left, titleText: "Popular")
+        label.configureTitleSize(fontSize: 24, weight: .black)
         return label
     }()
     
@@ -31,7 +27,6 @@ class HeaderView: UICollectionReusableView {
       }
 
       private func constraints() {
-          // Add your UILabel to the header view and set up constraints
           translatesAutoresizingMaskIntoConstraints = false
           addSubview(popularTitle)
 
@@ -41,7 +36,5 @@ class HeaderView: UICollectionReusableView {
             popularTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
             popularTitle.heightAnchor.constraint(equalToConstant: 100)
           ])
-          
-          popularTitle.text = "Popular"
-      }
+        }
 }

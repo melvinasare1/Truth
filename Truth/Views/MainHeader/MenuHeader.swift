@@ -16,27 +16,33 @@ class MenuHeader: UIView {
     
     private weak var delegate: MenuHeaderDelegate!
     
-    private let titleLabel: UILabel = {
-       let label = UILabel()
-        label.text = "Truth"
-        label.font = .boldSystemFont(ofSize: 24)
-        label.translatesAutoresizingMaskIntoConstraints = false
+    private let titleLabel: TruthLabel = {
+       let label = TruthLabel()
+        label.configureTitleSize(fontSize: 24, weight: .bold)
+        label.configureText(textAlignment: .left, titleText: "Truth")
         return label
     }()
     
-    private let searchButton: UIButton = {
-       let button = UIButton()
-        button.setImage(UIImage(systemName: "magnifyingglass"), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
+    private lazy var searchButton: TruthButton = {
+        let button = TruthButton(frame: .zero, tapHandler: searchButtonPressed)
+        button.positionImage(image: "magnifyingglass", alignment: .natural, isSFSymbol: true)
         return button
     }()
     
-    private let notificationsButton: UIButton = {
-       let button = UIButton()
+    private lazy var notificationsButton: TruthButton = {
+        let button = TruthButton(frame: .zero, tapHandler: notificationsButtonPressed)
         button.setImage(UIImage(systemName: "bell.fill"), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
     }()
+    
+    @objc func notificationsButtonPressed() {
+        
+    }
+    
+    @objc func searchButtonPressed() {
+        
+    }
  
     private let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -50,12 +56,22 @@ class MenuHeader: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
-        addSubview(titleLabel)
-        addSubview(stackView)
+        addSubviews()
 
+        setConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension MenuHeader {
+    
+    private func setConstraints() {
         stackView.addArrangedSubview(searchButton)
         stackView.addArrangedSubview(notificationsButton)
-
+        
         titleLabel.topAnchor.constraint(equalTo: topAnchor).isActive = true
         titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 32).isActive = true
         
@@ -64,7 +80,8 @@ class MenuHeader: UIView {
         stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
     }
     
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+    private func addSubviews() {
+        addSubview(titleLabel)
+        addSubview(stackView)
     }
 }

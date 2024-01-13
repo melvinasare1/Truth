@@ -8,12 +8,9 @@
 import UIKit
 
 class ArticleVerticleSlider: UIView {
-    private let articleTitle: UILabel = {
-        let text = UILabel()
-        text.translatesAutoresizingMaskIntoConstraints = false
-        text.textColor = .black
+    private let articleTitle: TruthLabel = {
+        let text = TruthLabel()
         text.numberOfLines = 3
-        text.font = UIFont.boldSystemFont(ofSize: 22)
         return text
     }()
         
@@ -47,9 +44,9 @@ class ArticleVerticleSlider: UIView {
     
     public func configureTitleSize(size: CGFloat, bold: Bool, weight: UIFont.Weight? = .regular) {
         if bold {
-            articleTitle.font = UIFont.boldSystemFont(ofSize: size)
+            articleTitle.configureTitleSize(fontSize: size, weight: .bold)
         } else {
-            articleTitle.font = UIFont.systemFont(ofSize: size, weight: weight!)
+            articleTitle.configureTitleSize(fontSize: size, weight: weight!)
         }
     }
     
@@ -59,7 +56,7 @@ class ArticleVerticleSlider: UIView {
     }()
     
     public func setArticleDetails(title: String, image: String?, source: String?) {
-        self.articleTitle.text = title
+        self.articleTitle.configureText(textAlignment: .left, titleText: title)
         self.articleImage.image = nil
         self.authorSource.setArticleSource(source: source)
     }
@@ -67,16 +64,31 @@ class ArticleVerticleSlider: UIView {
     override init(frame: CGRect) {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
-        addSubview(stackView)
-        addSubview(articleImage)
-
-        stackView.addArrangedSubview(authorDetails)
-        stackView.addArrangedSubview(articleTitle)
-        stackView.addArrangedSubview(authorSource)
+        addSubviews()
    
         imageStyles()
         authorDetails.isFullArticle(false)
 
+        setConstraints()
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension ArticleVerticleSlider {
+    
+    private func addSubviews() {
+        addSubview(stackView)
+        addSubview(articleImage)
+        
+        stackView.addArrangedSubview(authorDetails)
+        stackView.addArrangedSubview(articleTitle)
+        stackView.addArrangedSubview(authorSource)
+    }
+    
+    private func setConstraints() {
         articleImage.topAnchor.constraint(equalTo: topAnchor).isActive = true
         articleImage.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         articleImage.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
@@ -86,9 +98,5 @@ class ArticleVerticleSlider: UIView {
         stackView.leadingAnchor.constraint(equalTo: articleImage.trailingAnchor, constant: 8).isActive = true
         stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -8).isActive = true
         stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24).isActive = true
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

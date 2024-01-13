@@ -9,29 +9,39 @@ import UIKit
 
 class InteractionsView: UIView {
     private weak var delegate: InteractionsViewDelegate!
-    
-    private let likeButton: UIButton = {
-        let button = UIButton(type: .roundedRect)
-        button.setTitle("Like", for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.addTarget(InteractionsView.self, action: #selector(likeArticle), for: .touchUpInside)
+
+    private lazy var likeButton: TruthButton = {
+        let button = TruthButton(frame: .zero, tapHandler: likeArticle)
+        button.positionImage(image: "heart", alignment: .center, isSFSymbol: true)
+        button.configureBoarder(borderColor: nil, borderWidth: 0)
+        button.configureBackground(background: .clear)
         return button
     }()
     
-    private let shareButton: UIButton = {
-        let button = UIButton(type: .roundedRect)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Share", for: .normal)
-        button.addTarget(InteractionsView.self, action: #selector(shareArticle), for: .touchUpInside)
+    private lazy var shareButton: TruthButton = {
+        let button = TruthButton(frame: .zero, tapHandler: shareArticle)
+        button.positionImage(image: "square.and.arrow.up", alignment: .center, isSFSymbol: true)
+        button.configureBoarder(borderColor: UIColor.clear.cgColor, borderWidth: 0)
+        button.configureBoarder(borderColor: nil, borderWidth: 0)
+        button.configureBackground(background: .clear)
         return button
     }()
     
-    private let likeCounter: UILabel = {
-        let counter = UILabel()
-        counter.text = "5"
-        counter.translatesAutoresizingMaskIntoConstraints = false
+    private let likeCounter: TruthLabel = {
+        let counter = TruthLabel()
+        counter.configureText(textAlignment: .natural, titleText: "Pending")
         return counter
     }()
+    
+    @objc func shareArticle() {
+        print("share article")
+        self.delegate.shareButtonPressed()
+    }
+    
+    @objc func likeArticle() {
+        print("like article")
+        self.delegate.likeButtonPressed()
+    }
     
     private let stackView: UIStackView = {
         let stackView = UIStackView()
@@ -41,15 +51,7 @@ class InteractionsView: UIView {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    
-    @objc func shareArticle() {
-        self.delegate.shareButtonPressed()
-    }
-    
-    @objc func likeArticle() {
-        self.delegate.likeButtonPressed()
-    }
-    
+
     override init(frame: CGRect) {
         super.init(frame: frame)
         translatesAutoresizingMaskIntoConstraints = false
@@ -63,7 +65,6 @@ class InteractionsView: UIView {
         stackView.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         stackView.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
         stackView.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-
     }
     
     required init?(coder: NSCoder) {

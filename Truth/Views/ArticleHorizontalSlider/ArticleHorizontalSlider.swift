@@ -8,13 +8,13 @@
 import UIKit
 
 class ArticleHorizontalSlider: UIView {
-    private let articleTitle: UILabel = {
-        let text = UILabel()
-        text.translatesAutoresizingMaskIntoConstraints = false
-        text.font = .boldSystemFont(ofSize: 16)
-        text.numberOfLines = 2
-        text.textColor = .white
-        return text
+    
+    private let articleTitle: TruthLabel = {
+        let label = TruthLabel()
+        label.configureTitleColor(color: .white)
+        label.configureTitleSize(fontSize: 16, weight: .bold)
+        label.numberOfLines = 2
+        return label
     }()
         
     private let articleImage: UIImageView = {
@@ -36,9 +36,24 @@ class ArticleHorizontalSlider: UIView {
     }()
     
     public func setArticleDetails(title: String, image: String?, source: String?) {
-        self.articleTitle.text = title
+        self.articleTitle.configureText(textAlignment: .natural, titleText: title)
         self.articleImage.sd_setImage(with: URL(string: image ?? "", relativeTo: nil))
         self.authorSource.setArticleSource(source: source)
+    }
+    
+    private func setConstraints() {
+        articleImage.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
+        articleImage.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        articleImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        articleImage.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        
+        articleTitle.bottomAnchor.constraint(equalTo: articleImage.bottomAnchor, constant: -12).isActive = true
+        articleTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
+        articleTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        
+        authorSource.bottomAnchor.constraint(equalTo: articleTitle.topAnchor, constant: -12).isActive = true
+        authorSource.leadingAnchor.constraint(equalTo: articleTitle.leadingAnchor).isActive = true
+        authorSource.trailingAnchor.constraint(equalTo: articleTitle.trailingAnchor).isActive = true
     }
     
     override init(frame: CGRect) {
@@ -51,18 +66,7 @@ class ArticleHorizontalSlider: UIView {
                 
         imageStyles()
 
-        articleImage.topAnchor.constraint(equalTo: topAnchor, constant: 16).isActive = true
-        articleImage.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        articleImage.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        articleImage.heightAnchor.constraint(equalToConstant: 200).isActive = true
-
-        articleTitle.bottomAnchor.constraint(equalTo: articleImage.bottomAnchor, constant: -12).isActive = true
-        articleTitle.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16).isActive = true
-        articleTitle.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
-        
-        authorSource.bottomAnchor.constraint(equalTo: articleTitle.topAnchor, constant: -12).isActive = true
-        authorSource.leadingAnchor.constraint(equalTo: articleTitle.leadingAnchor).isActive = true
-        authorSource.trailingAnchor.constraint(equalTo: articleTitle.trailingAnchor).isActive = true
+        setConstraints()
     }
     
     required init?(coder: NSCoder) {

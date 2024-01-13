@@ -8,14 +8,9 @@
 import UIKit
 
 class NewsTypeViewCell: UICollectionViewCell {
-    private let newsTypeLabel: UILabel = {
-       let label = UILabel()
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .darkGray
-        label.text = "Text"
-        label.font = UIFont(name: "Arial", size: 12)
-        label.font = UIFont(name: "Arial", size: 8)
-        label.textAlignment = .center
+    private let newsTypeLabel: TruthLabel = {
+       let label = TruthLabel()
+        label.configureTitleSize(fontSize: 12, weight: .regular)
         return label
     }()
     
@@ -27,7 +22,7 @@ class NewsTypeViewCell: UICollectionViewCell {
     }
     
     public func configureNewsType(type: String) {
-        newsTypeLabel.text = type
+        self.newsTypeLabel.configureText(textAlignment: .center, titleText: type)
     }
     
     override init(frame: CGRect) {

@@ -11,29 +11,16 @@ import SDWebImage
 class NewsArticleViewController: UIViewController {
     private let viewModel: NewsArticleViewModel!
     
+    private let authorDetails = AuthorDetails()
+    private let interactionView = InteractionsView()
+    private let contentLabel = TruthLabel()
+    
     private let imageView: UIImageView = {
         let image = UIImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.image = UIImage(named: "picture")
         image.contentMode = .scaleAspectFit
         return image
-    }()
-    
-    private let authorDetails: AuthorDetails = {
-        let author = AuthorDetails()
-        return author
-    }()
-    
-    private let interactionView: InteractionsView = {
-        let view = InteractionsView()
-        return view
-    }()
-    
-    private let contentLabel: UILabel = {
-        let label = UILabel()
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
     }()
     
     private let readMoreButton: UIButton = {
@@ -72,14 +59,26 @@ class NewsArticleViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+   
+        addSubviews()
+        setConstraints()
+        
+        configureArticle(name: viewModel.authorName, date: viewModel.publishedDate, image: viewModel.image, content: viewModel.content)
+ 
+        authorDetails.isFullArticle(true)
+    }
+}
+
+extension NewsArticleViewController {
+    private func addSubviews() {
         view.addSubview(imageView)
         view.addSubview(authorDetails)
         view.addSubview(interactionView)
         view.addSubview(contentLabel)
         view.addSubview(readMoreButton)
-
-        configureArticle(name: viewModel.authorName, date: viewModel.publishedDate, image: viewModel.image, content: viewModel.content)
- 
+    }
+    
+    private func setConstraints() {
         imageView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
         imageView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
         imageView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
@@ -100,7 +99,18 @@ class NewsArticleViewController: UIViewController {
         readMoreButton.topAnchor.constraint(equalTo: contentLabel.bottomAnchor, constant: 24).isActive = true
         readMoreButton.leadingAnchor.constraint(equalTo: authorDetails.leadingAnchor).isActive = true
         readMoreButton.trailingAnchor.constraint(equalTo: authorDetails.trailingAnchor).isActive = true
-        
-        authorDetails.isFullArticle(true)
     }
+}
+
+extension NewsArticleViewController: InteractionsViewDelegate {
+    func shareButtonPressed() {
+        print("1234")
+    }
+    
+    func likeButtonPressed() {
+        print("3456")
+
+    }
+    
+    
 }

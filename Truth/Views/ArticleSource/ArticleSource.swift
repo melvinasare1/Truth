@@ -8,16 +8,14 @@
 import UIKit
 
 class ArticleSource: UIView {
-    private lazy var nameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "Base"
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.textColor = .white
+    private let nameLabel: TruthLabel = {
+        let label = TruthLabel()
+        label.configureTitleColor(color: .white)
         return label
     }()
 
     public func setArticleSource(source: String?) {
-        self.nameLabel.text = source
+        self.nameLabel.configureText(textAlignment: .left, titleText: source)
     }
     
     override init(frame: CGRect) {
