@@ -14,7 +14,7 @@ class NewsArticleViewModel {
     public var publishedDate: String
     public var url: URL
     
-    init(content: String, image: String, authorName: String, date: String, url: URL ) {
+    init(content: String, image: String, authorName: String, date: String, url: URL) {
         self.content = content
         self.image = image
         self.authorName = authorName

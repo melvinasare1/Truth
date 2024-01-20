@@ -10,26 +10,20 @@ import SDWebImage
 
 class NewsArticleViewController: UIViewController {
     private let viewModel: NewsArticleViewModel!
-    
     private let authorDetails = AuthorDetails()
-    private let interactionView = InteractionsView()
+    public let interactionView = InteractionsView()
     private let contentLabel = TruthLabel()
     
-    private let imageView: UIImageView = {
-        let image = UIImageView()
-        image.translatesAutoresizingMaskIntoConstraints = false
-        image.image = UIImage(named: "picture")
-        image.contentMode = .scaleAspectFit
-        return image
+    private let imageView: TruthImageView = {
+        let view = TruthImageView(frame: .zero)
+        view.contentMode = .scaleToFill
+        return view
     }()
     
-    private let readMoreButton: UIButton = {
-        let button = UIButton()
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle("Read More", for: .normal)
-        button.setTitleColor(.black, for: .normal)
-        button.backgroundColor = .red
-        button.addTarget(self, action: #selector(readMorePressed), for: .touchUpInside)
+    private let readMoreButton: TruthButton = {
+        let button = TruthButton()
+        button.configure(text: "Read More", color: .black)
+        button.addTarget(NewsArticleViewController.self, action: #selector(readMorePressed), for: .touchUpInside)
         return button
     }()
     
@@ -44,7 +38,7 @@ class NewsArticleViewController: UIViewController {
     
     public func configureArticle(name: String, date: String, image: String, content: String) {
         authorDetails.setAuthorDetails(name: name, publishedDate: date)
-        imageView.sd_setImage(with: URL(string: viewModel.image, relativeTo: nil))
+        imageView.setImage(image: image)
         contentLabel.text = content
     }
     
@@ -66,6 +60,8 @@ class NewsArticleViewController: UIViewController {
         configureArticle(name: viewModel.authorName, date: viewModel.publishedDate, image: viewModel.image, content: viewModel.content)
  
         authorDetails.isFullArticle(true)
+        
+        interactionView.delegate = self
     }
 }
 
@@ -88,7 +84,7 @@ extension NewsArticleViewController {
         authorDetails.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16).isActive = true
         authorDetails.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16).isActive = true
         
-        interactionView.topAnchor.constraint(equalTo: authorDetails.bottomAnchor, constant: 24).isActive = true
+        interactionView.topAnchor.constraint(equalTo: authorDetails.bottomAnchor, constant: 16).isActive = true
         interactionView.leadingAnchor.constraint(equalTo: authorDetails.leadingAnchor).isActive = true
         interactionView.trailingAnchor.constraint(equalTo: authorDetails.trailingAnchor).isActive = true
         
@@ -104,13 +100,15 @@ extension NewsArticleViewController {
 
 extension NewsArticleViewController: InteractionsViewDelegate {
     func shareButtonPressed() {
-        print("1234")
+        let items = [URL(string: "\(viewModel.url)")]
+        let share = UIActivityViewController(activityItems: items as [Any], applicationActivities: nil)
+        present(share, animated: true)
     }
     
     func likeButtonPressed() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
+        let dateString = dateFormatter.string(from: Date())
         print("3456")
-
     }
-    
-    
 }

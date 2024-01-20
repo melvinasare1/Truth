@@ -18,9 +18,9 @@ class Network {
     let apiKey = "b6cfba22f60740d5aa9d08cc0956a9e1"
  
     enum NewsApi: String {
-        case apple = "https://newsapi.org/v2/everything?q=apple&from=2023-12-21&to=2023-12-21&sortBy=popularity&apiKey="
-        case tesla = "https://newsapi.org/v2/everything?q=tesla&from=2023-11-22&sortBy=publishedAt&apiKey="
-        case us = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey="
+        case apple = "https://newsapi.org/v2/everything?q=apple&from=2023-12-21&to=2023-12-21&sortBy=popularity&apiKey=b6cfba22f60740d5aa9d08cc0956a9e1"
+        case tesla = "https://newsapi.org/v2/everything?q=tesla&from=2023-11-22&sortBy=publishedAt&apiKey=b6cfba22f60740d5aa9d08cc0956a9e1"
+        case us = "https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=b6cfba22f60740d5aa9d08cc0956a9e1"
         case techCrunch = "https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=b6cfba22f60740d5aa9d08cc0956a9e1"
         case wallStreet = "https://newsapi.org/v2/everything?domains=wsj.com&apiKey=b6cfba22f60740d5aa9d08cc0956a9e1"
     }
@@ -34,6 +34,7 @@ class Network {
                 return
             }
             
+                print(response, data)
             guard let response = response as? HTTPURLResponse, 200 ... 299  ~= response.statusCode else {
                 completion(.failure(.invalidResponse))
                 return

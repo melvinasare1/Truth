@@ -20,19 +20,25 @@ class MenuHeader: UIView {
        let label = TruthLabel()
         label.configureTitleSize(fontSize: 24, weight: .bold)
         label.configureText(textAlignment: .left, titleText: "Truth")
+        
         return label
     }()
     
     private lazy var searchButton: TruthButton = {
-        let button = TruthButton(frame: .zero, tapHandler: searchButtonPressed)
+        let button = TruthButton()
         button.positionImage(image: "magnifyingglass", alignment: .natural, isSFSymbol: true)
+        button.configureBoarder(borderColor: UIColor.clear.cgColor, borderWidth: 0)
+        button.configureBoarder(borderColor: nil, borderWidth: 0)
+        button.configureBackground(background: .clear)
         return button
     }()
     
     private lazy var notificationsButton: TruthButton = {
-        let button = TruthButton(frame: .zero, tapHandler: notificationsButtonPressed)
-        button.setImage(UIImage(systemName: "bell.fill"), for: .normal)
-        button.translatesAutoresizingMaskIntoConstraints = false
+        let button = TruthButton()
+        button.positionImage(image: "bell.fill", alignment: .natural, isSFSymbol: true)
+        button.configureBoarder(borderColor: UIColor.clear.cgColor, borderWidth: 0)
+        button.configureBoarder(borderColor: nil, borderWidth: 0)
+        button.configureBackground(background: .clear)
         return button
     }()
     
@@ -44,12 +50,9 @@ class MenuHeader: UIView {
         
     }
  
-    private let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .fill
-        stackView.spacing = 12
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+    private let stackView: TruthStackView = {
+        let stackView = TruthStackView()
+        stackView.configure(distribution: .fill, axis: .horizontal, spacing: 12)
         return stackView
     }()
     
@@ -78,6 +81,9 @@ extension MenuHeader {
         stackView.topAnchor.constraint(equalTo: titleLabel.topAnchor).isActive = true
         stackView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor).isActive = true
         stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16).isActive = true
+        
+        topAnchor.constraint(equalTo: topAnchor, constant: -5).isActive = true
+        bottomAnchor.constraint(equalTo: topAnchor, constant: 5).isActive = true
     }
     
     private func addSubviews() {

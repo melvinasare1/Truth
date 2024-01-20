@@ -12,13 +12,9 @@ import SDWebImage
 class HomeViewController: UIViewController {
     private var cancellables: Set<AnyCancellable> = []
     private let viewModel: HomeViewModel!
-    
-    private let menuHeader: MenuHeader = {
-        let header = MenuHeader()
-        return header
-    }()
-    
-    func horizontalScroll() -> NSCollectionLayoutSection {
+    private let menuHeader = MenuHeader()
+        
+    private func horizontalScroll() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
         item.contentInsets = NSDirectionalEdgeInsets(top: 0.0, leading: 12.0, bottom: 0.0, trailing: 12.0)
         let group = NSCollectionLayoutGroup.vertical(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.95), heightDimension: .fractionalHeight(0.25)), subitem: item, count: 1)
@@ -28,6 +24,7 @@ class HomeViewController: UIViewController {
         return section
     }
     
+    // TODO: Not used currently - fix
     func newsTypeScroll() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
         item.contentInsets = NSDirectionalEdgeInsets(top: 0.0, leading: 8.0, bottom: 0.0, trailing: 8.0)
@@ -38,7 +35,7 @@ class HomeViewController: UIViewController {
         return section
     }
     
-    func verticleScroll() -> NSCollectionLayoutSection {
+    private func verticleScroll() -> NSCollectionLayoutSection {
         let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
         item.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 0, trailing: 0)
         let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),  heightDimension: .estimated(130))
@@ -48,13 +45,24 @@ class HomeViewController: UIViewController {
         return section
     }
     
+    private func titleLayout() -> NSCollectionLayoutSection {
+        let item = NSCollectionLayoutItem(layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0), heightDimension: .fractionalHeight(1.0)))
+        item.contentInsets = NSDirectionalEdgeInsets(top: 16, leading: 0, bottom: 16, trailing: 0)
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),  heightDimension: .estimated(60))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 1)
+        let section = NSCollectionLayoutSection(group: group)
+        section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 12, bottom: 0, trailing: 12)
+        return section
+    }
+    
+    
     func makeLayout() -> UICollectionViewLayout {
         let layout = UICollectionViewCompositionalLayout { (section: Int, environment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection? in
             print(section)
             if section == 0 {
                 return self.horizontalScroll()
             } else if section == 1 {
-                return self.newsTypeScroll()
+                return self.titleLayout()
             } else {
                 return self.verticleScroll()
             }
@@ -62,13 +70,13 @@ class HomeViewController: UIViewController {
         return layout
     }
     
-    private lazy var baseCollectionView: UICollectionView = {
+    public lazy var baseCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: makeLayout())
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.showsVerticalScrollIndicator = false
         collectionView.register(ArticleHorizontalSliderCell.self, forCellWithReuseIdentifier: "horizontalCell")
-        collectionView.register(NewsTypeViewCell.self, forCellWithReuseIdentifier: "newsTypeCell")
+        collectionView.register(TitleViewCell.self, forCellWithReuseIdentifier: "titleCell")
         collectionView.register(ArticleVerticleSliderCell.self, forCellWithReuseIdentifier: "verticalCell")
         collectionView.register(HeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "headerCell")
         collectionView.translatesAutoresizingMaskIntoConstraints = false
@@ -84,17 +92,16 @@ class HomeViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // TODO: Fix the header, currently isn't working.
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         print(kind)
         if kind == UICollectionView.elementKindSectionHeader && indexPath.item == 1 {
             let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "headerCell", for: indexPath) as! HeaderView
             return headerView
         }
-
         return UICollectionReusableView()
     }
 
-    
     private func setConstraints() {
         NSLayoutConstraint.activate([
             menuHeader.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
@@ -111,8 +118,14 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
         viewModel.$techCrunchNews
+            .sink { [weak self] news in
+                DispatchQueue.main.async {
+                    self!.baseCollectionView.reloadData()
+                }
+            }.store(in: &cancellables)
+        
+        viewModel.$appleNews
             .sink { [weak self] news in
                 DispatchQueue.main.async {
                     self!.baseCollectionView.reloadData()
@@ -124,9 +137,7 @@ class HomeViewController: UIViewController {
         
         setConstraints()
         
-        baseCollectionView.reloadData()
-        
-        viewModel.fetchTechCrunchArticles()
+        baseCollectionView.reloadData()        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -140,22 +151,19 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
         if section == 0 {
             return 5
         } else if section == 1 {
-            return 5
+            return 1
         } else {
-            return 8
+            return 5
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-                
-        if indexPath.section == 0 {
-            let article = viewModel.techCrunchNews?.articles[indexPath.row]
-            print(article)
-            let vm = NewsArticleViewModel(content: article?.content ?? "", image: article?.urlToImage?.absoluteString ?? "", authorName: article?.author ?? "", date: article?.publishedAt ?? "", url: (article?.url)!)
-            
-            let viewController = NewsArticleViewController(viewModel: vm)
-            self.navigationController?.pushViewController(viewController, animated: true)
-        }
+        let article = indexPath.section == 0 ? viewModel.techCrunchNews?.articles[indexPath.row] : viewModel.appleNews?.articles[indexPath.row]
+        
+        let vm = NewsArticleViewModel(content: article?.content ?? "", image: article?.urlToImage?.absoluteString ?? "", authorName: article?.author ?? "", date: article?.publishedAt ?? "", url: article!.url)
+        
+        let viewController = NewsArticleViewController(viewModel: vm)
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -171,12 +179,14 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
             }
             return cell
         } else if indexPath.section == 1 {
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "newsTypeCell", for: indexPath) as! NewsTypeViewCell
-            cell.configureNewsType(type: "TYPE")
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "titleCell", for: indexPath) as! TitleViewCell
             return cell
         } else {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "verticalCell", for: indexPath) as! ArticleVerticleSliderCell
-            cell.configureArticle(title: "news.title", image: nil, source: "news.source?.name ")
+            
+            if let news = viewModel.news(for: indexPath, articles: viewModel.appleNews?.articles) {
+                cell.configureArticle(title: news.title, image: news.urlToImage?.absoluteString, source: news.source?.name ?? "")
+            }
             return cell
         }
     }

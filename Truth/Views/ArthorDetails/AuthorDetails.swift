@@ -21,17 +21,25 @@ class AuthorDetails: UIView {
         return label
     }()
     
-    private let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .horizontal
-        stackView.distribution = .equalSpacing
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+    private let stackView: TruthStackView = {
+        let stackView = TruthStackView()
+        stackView.configure(distribution: .equalSpacing, axis: .horizontal, spacing: 0)
         return stackView
     }()
     
+    public func convertDate(date: String) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "en_US_POSIX") // set locale to reliable US_POSIX
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        let date = dateFormatter.date(from: date)!
+        
+        return "\(date)"
+    }
+    
     public func setAuthorDetails(name: String, publishedDate: String) {
         self.authorNameLabel.configureText(textAlignment: .natural, titleText: name)
-        self.publishedDateLabel.configureText(textAlignment: .natural, titleText: publishedDate)
+        self.publishedDateLabel.configureText(textAlignment: .natural, titleText: convertDate(date: publishedDate))
+        print(publishedDate)
     }
     
     public func isFullArticle(_ isFullArticle: Bool) {
@@ -41,6 +49,8 @@ class AuthorDetails: UIView {
             
             addSubview(stackView)
             
+            stackView.topAnchor.constraint(equalTo: topAnchor).isActive = true
+            stackView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 6).isActive = true
             stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -6).isActive = true
         } else {

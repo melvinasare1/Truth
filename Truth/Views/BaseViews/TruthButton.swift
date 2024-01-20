@@ -7,10 +7,14 @@
 
 import UIKit
 
+enum ButtonVariant {
+    case filled
+    case unfilled
+    case outline
+}
 
 class TruthButton: UIButton {
-    private var tapHandler: (() -> Void)?
-
+    
     public let iconImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -26,20 +30,40 @@ class TruthButton: UIButton {
         backgroundColor = background
     }
     
-    @objc func buttonTapped() {
-        self.tapHandler?()
-        print("fkmgkmf")
-    }
-    
-    public func onPress() {
-        self.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
-        print("------")
-
-    }
- 
     public func configureBoarder(borderColor: CGColor?, borderWidth: CGFloat) {
         self.layer.borderColor = borderColor
         self.layer.borderWidth = borderWidth
+    }
+    
+    public func setFilledButton(color: UIColor? = .systemBlue) {
+        backgroundColor = color
+        layer.borderWidth = 0.5
+        layer.borderColor = UIColor.black.cgColor
+    }
+    
+    public func setOutlinedButton() {
+        layer.borderWidth = 0.5
+        layer.borderColor = UIColor.black.cgColor
+        backgroundColor = .white
+    }
+    
+    public func setUnfilledButton() {
+        backgroundColor = .clear
+        layer.borderWidth = 0
+    }
+    
+    public func variant(variant: ButtonVariant) {
+        switch variant {
+        case .filled:
+            setFilledButton()
+            break
+        case .outline:
+            setOutlinedButton()
+            break
+        case .unfilled:
+            setUnfilledButton()
+            break
+        }
     }
     
     private func leftPosition(image: String) {
@@ -79,9 +103,8 @@ class TruthButton: UIButton {
         }
     }
     
-    init(frame: CGRect, tapHandler: (() -> Void)?) {
+    override init(frame: CGRect) {
         super.init(frame: frame)
-        self.tapHandler = tapHandler
         setup()
     }
     
@@ -94,14 +117,11 @@ class TruthButton: UIButton {
 private extension TruthButton {
     func setup() {
         addSubview(iconImageView)
-        
+                
         topAnchor.constraint(equalTo: topAnchor).isActive = true
         leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
         trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
         heightAnchor.constraint(equalToConstant: 54).isActive = true
-        
-        layer.cornerRadius = 20
-        layer.borderWidth = 2
         
         translatesAutoresizingMaskIntoConstraints = false
         titleLabel?.textAlignment = .center
@@ -109,6 +129,6 @@ private extension TruthButton {
         
         backgroundColor = .systemBlue
         setTitleColor(.white, for: .normal)
+        layer.cornerRadius = 20
     }
 }
-

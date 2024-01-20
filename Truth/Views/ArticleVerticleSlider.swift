@@ -8,39 +8,20 @@
 import UIKit
 
 class ArticleVerticleSlider: UIView {
+    private let articleImage = TruthImageView(frame: .zero)
+    private let authorDetails = AuthorDetails()
+    
     private let articleTitle: TruthLabel = {
         let text = TruthLabel()
         text.numberOfLines = 3
         return text
     }()
         
-    private let articleImage: UIImageView = {
-       let image = UIImageView()
-        image.contentMode = .scaleAspectFit
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-    
-    private let authorDetails: AuthorDetails = {
-       let details = AuthorDetails()
-        return details
-    }()
-    
-    private let stackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
-        stackView.spacing = 12
-        stackView.translatesAutoresizingMaskIntoConstraints = false
+    private let stackView: TruthStackView = {
+        let stackView = TruthStackView()
+        stackView.configure(distribution: .equalSpacing, axis: .vertical, spacing: 12)
         return stackView
     }()
-    
-    private func imageStyles() {
-        articleImage.backgroundColor = .red
-        articleImage.layer.cornerRadius = 8
-        articleImage.contentMode = .scaleAspectFill
-        articleImage.layer.masksToBounds = true
-    }
     
     public func configureTitleSize(size: CGFloat, bold: Bool, weight: UIFont.Weight? = .regular) {
         if bold {
@@ -57,7 +38,7 @@ class ArticleVerticleSlider: UIView {
     
     public func setArticleDetails(title: String, image: String?, source: String?) {
         self.articleTitle.configureText(textAlignment: .left, titleText: title)
-        self.articleImage.image = nil
+        self.articleImage.setImage(image: image)
         self.authorSource.setArticleSource(source: source)
     }
     
@@ -65,8 +46,6 @@ class ArticleVerticleSlider: UIView {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         addSubviews()
-   
-        imageStyles()
         authorDetails.isFullArticle(false)
 
         setConstraints()

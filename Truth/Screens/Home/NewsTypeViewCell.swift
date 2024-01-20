@@ -7,6 +7,8 @@
 
 import UIKit
 
+// TODO: Fix this in future iteraction
+
 class NewsTypeViewCell: UICollectionViewCell {
     private let newsTypeLabel: TruthLabel = {
        let label = TruthLabel()

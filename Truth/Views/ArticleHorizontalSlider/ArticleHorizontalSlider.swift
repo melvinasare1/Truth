@@ -9,6 +9,7 @@ import UIKit
 
 class ArticleHorizontalSlider: UIView {
     
+    private let articleImage = TruthImageView(frame: .zero)
     private let articleTitle: TruthLabel = {
         let label = TruthLabel()
         label.configureTitleColor(color: .white)
@@ -17,19 +18,6 @@ class ArticleHorizontalSlider: UIView {
         return label
     }()
         
-    private let articleImage: UIImageView = {
-       let image = UIImageView()
-        image.contentMode = .scaleAspectFit
-        image.translatesAutoresizingMaskIntoConstraints = false
-        return image
-    }()
-    
-    private func imageStyles() {
-        articleImage.layer.cornerRadius = 8
-        articleImage.contentMode = .scaleAspectFill
-        articleImage.layer.masksToBounds = true
-    }
-    
     private let authorSource: ArticleSource = {
         let source = ArticleSource()
         return source
@@ -37,7 +25,7 @@ class ArticleHorizontalSlider: UIView {
     
     public func setArticleDetails(title: String, image: String?, source: String?) {
         self.articleTitle.configureText(textAlignment: .natural, titleText: title)
-        self.articleImage.sd_setImage(with: URL(string: image ?? "", relativeTo: nil))
+        self.articleImage.setImage(image: image)
         self.authorSource.setArticleSource(source: source)
     }
     
@@ -64,8 +52,6 @@ class ArticleHorizontalSlider: UIView {
         addSubview(articleTitle)
         addSubview(authorSource)
                 
-        imageStyles()
-
         setConstraints()
     }
     
