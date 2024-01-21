@@ -27,7 +27,6 @@ To keep this project simple and progressive it's been split into multiple stages
   <p>Features/Improvement</p>
    <ol>
     <li>Add a loading state</li>
-    <li>Cache images to improve performance and reduce loading times</li>
     <li>Articles without an image when expanded should display "No Image" placeholder</li>
     <li>There's a clash with the text and images - needs to be fixed.</li>
     <li>Align components / adjust padding</li>
@@ -38,6 +37,7 @@ To keep this project simple and progressive it's been split into multiple stages
     <br>
     <p>Features/Improvement</p>
      <ol>
+      <li>Cache images to improve performance and reduce loading times</li>
       <li>Improve navigation as it's currently sluggish and flickers on page transition</li>
       <li>Add a subject filter, allowing users to view articles based on subjects/topics</li>
    </ol>
