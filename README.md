@@ -75,5 +75,5 @@ To keep this project simple and progressive it's been split into multiple stages
 
 <div>
   <p>VIDEO</p>
-  https://github.com/melvinasare1/Truth/assets/25648925/e9fc6e17-be46-4651-96bb-16de7ac2e661
+  ![SimulatorScreenRecording-iPhone15Pro-2024-01-21at13 03 10-ezgif com-video-to-gif-converter (1)](https://github.com/melvinasare1/Truth/assets/25648925/2dd222b7-06fb-4087-8a20-3e9f4fbeabfb)
 </div>
