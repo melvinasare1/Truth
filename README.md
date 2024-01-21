@@ -58,10 +58,7 @@ To keep this project simple and progressive it's been split into multiple stages
     <br>
     <p>Features/Improvement</p>
    <ol>
-    <li>Implement a background allowing users to save, like and view a like counter for each article</li>
-    <li>Add a search feature to filter through articles</li>
-    <li>Implement live notifications to alert users when new articles are posted</li>
-     <li>Add screen for users to view saved articles</li>
+    TO BE ANNOUNCED
   </ol>
   <br>
 </ul>
