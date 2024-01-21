@@ -26,6 +26,7 @@ To keep this project simple and progressive it's been split into multiple stages
   <br>
   <p>Features/Improvement</p>
    <ol>
+     <li>Add splash screen</li>
     <li>Add a loading state</li>
     <li>Articles without an image when expanded should display "No Image" placeholder</li>
     <li>There's a color clash with the text and images - needs to be fixed.</li>
