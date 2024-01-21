@@ -73,7 +73,7 @@ To keep this project simple and progressive it's been split into multiple stages
 <span><img width="350" height="650" alt="Screenshot 2024-01-20 at 22 46 06" src="https://github.com/melvinasare1/Truth/assets/25648925/ab9dcd32-c1bc-4f66-99d2-95fa92027df6"></span>
 </div>
 
-<div>
+<div=>
   <p>VIDEO</p>
   
   ![SimulatorScreenRecording-iPhone15Pro-2024-01-21at13 03 10-ezgif com-video-to-gif-converter (1)](https://github.com/melvinasare1/Truth/assets/25648925/2dd222b7-06fb-4087-8a20-3e9f4fbeabfb)
