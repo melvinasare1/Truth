@@ -40,7 +40,6 @@ To keep this project simple and progressive it's been split into multiple stages
      <ol>
       <li>Improve navigation as it's currently sluggish and flickers on page transition</li>
       <li>Add a subject filter, allowing users to view articles based on subjects/topics</li>
-      <li></li>
    </ol>
   <br>
 
