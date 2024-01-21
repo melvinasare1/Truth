@@ -21,6 +21,7 @@ To keep this project simple and progressive it's been split into multiple stages
     <li>Open articles to full external web link</li>
   </ol>
 <br>
+
   <li>Stage 2: Update and Improve UI.</li> 
   <br>
   <p>Features/Improvement</p>
@@ -34,24 +35,33 @@ To keep this project simple and progressive it's been split into multiple stages
   <br>
 
   <li>Stage 3: Improve usability </li>
+    <br>
+    <p>Features/Improvement</p>
      <ol>
       <li>Improve navigation as it's currently sluggish and flickers on page transition</li>
-       
+      <li>Add a subject filter, allowing users to view articles based on subjects/topics</li>
+      <li></li>
    </ol>
-
   <br>
 
-  <li>Stage 4: </li>
+  <li>Stage 4: Add a backend allowing users to create accounts, save articles and like articles </li>
   <br>
+  <p>Features/Improvement</p>
+  <ol>
+    <li>Implement a background allowing users to save, like and view a like counter for each article</li>
+    <li>Add a search feature to filter through articles</li>
+    <li>Implement live notifications to alert users when new articles are posted</li>
+     <li>Add screen for users to view saved articles</li>
+  </ol>
 
-  <li>Stage 5: Add a backend allowing users to create accounts, save articles and like articles</li>
+  <li>Stage 5: Improve overall performance</li>
     <br>
     <p>Features/Improvement</p>
    <ol>
     <li>Implement a background allowing users to save, like and view a like counter for each article</li>
     <li>Add a search feature to filter through articles</li>
     <li>Implement live notifications to alert users when new articles are posted</li>
-    <li>Add a subject filter, allowing users to view articles based on subjects/topics</li>
+     <li>Add screen for users to view saved articles</li>
   </ol>
   <br>
 </ul>
