@@ -28,7 +28,7 @@ To keep this project simple and progressive it's been split into multiple stages
    <ol>
     <li>Add a loading state</li>
     <li>Articles without an image when expanded should display "No Image" placeholder</li>
-    <li>There's a clash with the text and images - needs to be fixed.</li>
+    <li>There's a color clash with the text and images - needs to be fixed.</li>
     <li>Align components / adjust padding</li>
   </ol>
   <br>
