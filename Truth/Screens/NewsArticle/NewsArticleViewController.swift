@@ -23,7 +23,7 @@ class NewsArticleViewController: UIViewController {
     private let readMoreButton: TruthButton = {
         let button = TruthButton()
         button.configure(text: "Read More", color: .black)
-        button.addTarget(NewsArticleViewController.self, action: #selector(readMorePressed), for: .touchUpInside)
+        button.addTarget(self, action: #selector(readMorePressed), for: .touchUpInside)
         return button
     }()
     

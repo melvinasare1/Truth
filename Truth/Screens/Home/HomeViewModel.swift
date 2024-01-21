@@ -14,7 +14,7 @@ class HomeViewModel {
 
     private var newsTypes = ["Beyond","Taste", "Hello", "Time"]
     
-    public func news(for indexPath: IndexPath, articles: [Articles]?) -> Articles? {
+    public func news(for indexPath: IndexPath, articles: [Article]?) -> Article? {
         return articles?.object(at: indexPath.row)
     }
     

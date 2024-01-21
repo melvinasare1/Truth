@@ -160,7 +160,7 @@ extension HomeViewController: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let article = indexPath.section == 0 ? viewModel.techCrunchNews?.articles[indexPath.row] : viewModel.appleNews?.articles[indexPath.row]
         
-        let vm = NewsArticleViewModel(content: article?.content ?? "", image: article?.urlToImage?.absoluteString ?? "", authorName: article?.author ?? "", date: article?.publishedAt ?? "", url: article!.url)
+        let vm = NewsArticleViewModel(content: article?.content ?? "", image: article?.urlToImage?.absoluteString ?? "", authorName: article?.author ?? "", date: article?.publishedAt ?? "", url: (article?.url)!)
         
         let viewController = NewsArticleViewController(viewModel: vm)
         self.navigationController?.pushViewController(viewController, animated: true)
