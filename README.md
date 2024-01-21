@@ -16,9 +16,9 @@ To keep this project simple and progressive it's been split into multiple stages
 
   <p>Features</p>
   <ol>
-    <li>Ability to view articles</li>
-    <li>Abilty to share articles</li>
-    <li>Open articles to full external web link</li>
+    <li>Ability to view articles</li> ✅
+    <li>Abilty to share articles</li> ✅
+    <li>Open articles to full external web link</li> ✅
   </ol>
 <br>
 
