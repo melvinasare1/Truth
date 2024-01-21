@@ -54,6 +54,7 @@ To keep this project simple and progressive it's been split into multiple stages
      <li>Add screen for users to view saved articles</li>
   </ol>
 
+  <br>
   <li>Stage 5: Improve overall performance</li>
     <br>
     <p>Features/Improvement</p>
