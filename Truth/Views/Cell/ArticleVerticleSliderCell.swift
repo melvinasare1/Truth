@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class ArticleVerticleSliderCell: UICollectionViewCell {
     private let article: ArticleVerticleSlider = {
@@ -21,9 +22,10 @@ class ArticleVerticleSliderCell: UICollectionViewCell {
         article.configureTitleSize(size: size, bold: bold)
     }
     
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+        isSkeletonable = true
         contentView.addSubview(article)
 
         article.topAnchor.constraint(equalTo: topAnchor).isActive = true

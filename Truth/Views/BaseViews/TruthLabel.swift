@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class TruthLabel: UILabel {
     
@@ -34,6 +35,7 @@ class TruthLabel: UILabel {
 
 extension TruthLabel {
     func setup() {
+        isSkeletonable = true
         minimumScaleFactor = 0.9
         numberOfLines = 0
         textColor = .darkGray

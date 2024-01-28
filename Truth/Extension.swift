@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 extension Array {
     public func object(at index: Int) -> Element? {

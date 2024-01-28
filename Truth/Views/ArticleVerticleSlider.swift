@@ -6,11 +6,11 @@
 //
 
 import UIKit
+import SkeletonView
 
 class ArticleVerticleSlider: UIView {
     private let articleImage = TruthImageView(frame: .zero)
     private let authorDetails = AuthorDetails()
-    
     private let articleTitle: TruthLabel = {
         let text = TruthLabel()
         text.numberOfLines = 3
@@ -44,6 +44,7 @@ class ArticleVerticleSlider: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        isSkeletonable = true
         translatesAutoresizingMaskIntoConstraints = false
         addSubviews()
         authorDetails.isFullArticle(false)

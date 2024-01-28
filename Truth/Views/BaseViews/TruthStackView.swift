@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class TruthStackView: UIStackView {
     
@@ -17,7 +18,9 @@ class TruthStackView: UIStackView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        translatesAutoresizingMaskIntoConstraints = false
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.isSkeletonable = true
+
     }
     
     required init(coder: NSCoder) {

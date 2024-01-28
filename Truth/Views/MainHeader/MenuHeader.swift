@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 protocol MenuHeaderDelegate: AnyObject {
     func searchButtonPressed()
@@ -58,6 +59,7 @@ class MenuHeader: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        isSkeletonable = true
         translatesAutoresizingMaskIntoConstraints = false
         addSubviews()
 

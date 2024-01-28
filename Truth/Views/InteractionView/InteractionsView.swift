@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class InteractionsView: UIView {
     public weak var delegate: InteractionsViewDelegate?
@@ -50,6 +51,8 @@ class InteractionsView: UIView {
 
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        self.isSkeletonable = true
+        
         translatesAutoresizingMaskIntoConstraints = false
         addSubview(stackView)
         

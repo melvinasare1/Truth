@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class AuthorDetails: UIView {
         
@@ -62,7 +63,8 @@ class AuthorDetails: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        translatesAutoresizingMaskIntoConstraints = false
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.isSkeletonable = true
     }
 
     required init?(coder: NSCoder) {

@@ -7,6 +7,7 @@
 
 import UIKit
 import SDWebImage
+import SkeletonView
 
 class NewsArticleViewController: UIViewController {
     private let viewModel: NewsArticleViewModel!
@@ -45,15 +46,16 @@ class NewsArticleViewController: UIViewController {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        navigationController?.isNavigationBarHidden = false
-    }
-    
+        
     override func viewDidLoad() {
         super.viewDidLoad()
-   
+        view.showAnimatedSkeleton()
+        
+        interactionView.showAnimatedSkeleton()
+        authorDetails.showAnimatedSkeleton()
+        contentLabel.showAnimatedSkeleton()
+        readMoreButton.showAnimatedSkeleton()
+        
         addSubviews()
         setConstraints()
         
@@ -62,6 +64,11 @@ class NewsArticleViewController: UIViewController {
         authorDetails.isFullArticle(true)
         
         interactionView.delegate = self
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.isNavigationBarHidden = false
     }
 }
 

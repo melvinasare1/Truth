@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class TruthImageView: UIImageView {
     
@@ -17,6 +18,8 @@ class TruthImageView: UIImageView {
         
         self.layer.borderColor = UIColor.black.cgColor
         self.layer.borderWidth = 1
+        
+        self.isSkeletonable = true
     }
     
     required init?(coder: NSCoder) {

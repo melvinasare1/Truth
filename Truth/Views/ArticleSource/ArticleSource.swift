@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class ArticleSource: UIView {
     private let nameLabel: TruthLabel = {
@@ -20,6 +21,7 @@ class ArticleSource: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        isSkeletonable = true
         translatesAutoresizingMaskIntoConstraints = false
         
         addSubview(nameLabel)

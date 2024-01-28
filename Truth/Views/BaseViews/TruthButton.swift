@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 enum ButtonVariant {
     case filled
@@ -116,19 +117,21 @@ class TruthButton: UIButton {
 
 private extension TruthButton {
     func setup() {
-        addSubview(iconImageView)
+        self.addSubview(iconImageView)
                 
-        topAnchor.constraint(equalTo: topAnchor).isActive = true
-        leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
-        trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
-        heightAnchor.constraint(equalToConstant: 54).isActive = true
+        self.topAnchor.constraint(equalTo: topAnchor).isActive = true
+        self.leadingAnchor.constraint(equalTo: leadingAnchor).isActive = true
+        self.trailingAnchor.constraint(equalTo: trailingAnchor).isActive = true
+        self.heightAnchor.constraint(equalToConstant: 54).isActive = true
         
-        translatesAutoresizingMaskIntoConstraints = false
-        titleLabel?.textAlignment = .center
-        titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
+        self.translatesAutoresizingMaskIntoConstraints = false
+        self.titleLabel?.textAlignment = .center
+        self.titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .semibold)
         
-        backgroundColor = .systemBlue
-        setTitleColor(.white, for: .normal)
-        layer.cornerRadius = 20
+        self.backgroundColor = .systemBlue
+        self.setTitleColor(.white, for: .normal)
+        self.layer.cornerRadius = 20
+        
+        self.isSkeletonable = true
     }
 }

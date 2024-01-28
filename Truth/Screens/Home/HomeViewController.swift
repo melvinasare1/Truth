@@ -8,6 +8,7 @@
 import UIKit
 import Combine
 import SDWebImage
+import SkeletonView
 
 class HomeViewController: UIViewController {
     private var cancellables: Set<AnyCancellable> = []
@@ -115,9 +116,13 @@ class HomeViewController: UIViewController {
         ])
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.view.showSkeleton()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         viewModel.$techCrunchNews
             .sink { [weak self] news in
                 DispatchQueue.main.async {
@@ -137,7 +142,9 @@ class HomeViewController: UIViewController {
         
         setConstraints()
         
-        baseCollectionView.reloadData()        
+        baseCollectionView.reloadData()    
+        
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
